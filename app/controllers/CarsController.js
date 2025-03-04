@@ -38,7 +38,6 @@ export class CarsController {
       event.preventDefault()
       const formElem = event.target
       const rawCarData = getFormData(formElem)
-      console.log('car data from form', rawCarData);
       await carsService.createCar(rawCarData)
     } catch (error) {
       console.error('COULD NOT CREATE CAR', error);
