@@ -8,7 +8,6 @@ export class CarsController {
     AppState.on('cars', this.drawCars)
     AppState.on('identity', this.drawCars)
     AppState.on('identity', this.drawCarForm)
-    console.log('Cars Controller is loaded!');
     this.getCars()
   }
 
@@ -56,7 +55,6 @@ export class CarsController {
       }
 
       await carsService.deleteCar(carId)
-
     } catch (error) {
       console.error('COULD NOT DELETE CAR', error);
       Pop.error(error, 'Could not delete car!')

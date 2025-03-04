@@ -5,22 +5,23 @@ import { api } from "../utils/Axios.js"
 class CarsService {
   async deleteCar(carId) {
     const response = await api.delete(`api/cars/${carId}`)
-    console.log('DELETED CAR 📡📡📡📡', response.data);
 
     const cars = AppState.cars
     const carIndex = cars.findIndex(car => car.id == carId)
-    cars.splice(carIndex, 1)
+    cars.splice(carIndex, 1) // trigger observer
   }
   async createCar(carData) {
+    // NOTE always make network request BEFORE updating AppState
     // NOTE carData becomes the payload (request body) for this request
     const response = await api.post('api/cars', carData)
-    console.log('CREATED CAR 📡📡📡📡', response.data);
+    // NOTE response.data from POST request is the object that was just added to the database, so we can add that to our local array in the AppState 
     const car = new Car(response.data)
     AppState.cars.push(car) // trigger observer
   }
   async getCars() {
     const response = await api.get('api/cars')
-    console.log('GOT CARS 📡📡📡📡', response.data);
+    // response.data => [ {...}, {...}, {...} ]
+    // cars => [ Car, Car, Car]
     const cars = response.data.map(pojo => new Car(pojo))
     AppState.cars = cars // trigger observer
   }

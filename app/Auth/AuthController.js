@@ -31,7 +31,6 @@ function _drawAuthSettings() {
 }
 export class AuthController {
   constructor() {
-    AppState.account = null
     AppState.identity = null
     AppState.on('account', drawUser)
     AuthService.on(AuthService.AUTH_EVENTS.LOADED, drawUser)
@@ -76,7 +75,7 @@ function avatarTemplate(account) {
       </a>`
     : AuthService.loading
       ? /* html */ `
-      <div style="width: 20ch" class="d-flex text-light gap-2 align-items-center placeholder-glow">
+      <div style="width: 20ch;" class="d-flex text-light gap-2 align-items-center placeholder-glow">
         <span class="placeholder rounded-circle" style="height: 40px; width: 40px;"></span>
         <span class="placeholder col h-25 rounded"></span>
       </div >`
