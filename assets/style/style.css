@@ -7,6 +7,14 @@ body {
 
 main {
   flex-grow: 1;
+  padding: 5;
+  content: justify;
+  background-color: rgb(84, 82, 82);
+ text-shadow: white;
+  border-width: thick;
+  text-wrap: space-around
+  ;
+
 }
 
 label {
@@ -44,4 +52,10 @@ input {
 
 .creator-img {
   max-height: 3em;
+}
+
+.col-12 {
+  border: solid,red;
+  border-width: thick;
+  
 }
